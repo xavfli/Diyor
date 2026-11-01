@@ -288,7 +288,7 @@ button,
 }
 
 .envelope__seal::before {
-  content: "BN";
+  content: "DZ";
   position: absolute;
   inset: 0;
   display: grid;
@@ -882,6 +882,17 @@ button,
   margin-top: 18px;
 }
 
+.map-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.map-links .inline-button {
+  flex: 1;
+  justify-content: center;
+}
+
 .info-card,
 .attire-card {
   padding: 26px 22px;
@@ -1209,6 +1220,48 @@ button,
   .form-response {
     grid-column: 1 / -1;
   }
+}
+
+/* Compact wishes form */
+#rsvp .section-heading h2 {
+  font-size: 1.6rem;
+}
+#rsvp .rsvp-form {
+  padding: 24px 20px;
+  gap: 14px;
+}
+#rsvp .rsvp-form label {
+  font-size: 0.85rem;
+}
+#rsvp .rsvp-form input,
+#rsvp .rsvp-form textarea {
+  padding: 10px 14px;
+  font-size: 0.9rem;
+}
+#rsvp .rsvp-form .submit-button {
+  padding: 12px 20px;
+  font-size: 0.9rem;
+}
+.wishes-list {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.wish-item {
+  background: var(--surface-strong);
+  border-radius: 16px;
+  padding: 14px 18px;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.wish-item .wish-name {
+  font-weight: 700;
+  color: var(--sage-deep);
+}
+.wish-item .wish-text {
+  color: var(--muted);
+  margin-top: 4px;
 }
 
 @media (prefers-reduced-motion: reduce) {

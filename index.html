@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bobur & Nafisa | To'y Taklifnomasi</title>
+  <title>Diyorbek & Zarina | To'y Taklifnomasi</title>
   <meta
     name="description"
-    content="Bobur va Nafisa uchun premium mobil to'y taklifnomasi."
+    content="Diyorbek va Zarina uchun premium mobil to'y taklifnomasi."
   >
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,15 +41,14 @@
         </span>
         <span class="envelope__letter">
           <span class="envelope__eyebrow">To'y Taklifnomasi</span>
-          <span class="envelope__names">Bobur &amp; Nafisa</span>
+          <span class="envelope__names">Diyorbek &amp; Zarina</span>
           <span class="envelope__tap">Ushbu taklifnoma aynan siz uchun</span>
         </span>
       </button>
     </div>
 
     <audio id="backgroundMusic" loop preload="auto">
-      <source src="Moayad-Aljabal-Floating-in-Reverie.m4a" type="audio/mp4">
-      <source src="moayad aljabal-floating in reverie.mp3" type="audio/mpeg">
+      <source src="Jacob s Piano - 4 Beautiful Soundtracks.mp3" type="audio/mpeg">
     </audio>
 
     <button class="music-toggle" id="musicToggle" type="button" aria-pressed="false">
@@ -62,8 +61,8 @@
       <div class="hero-overlay"></div>
       <div class="hero-content">
         <p class="eyebrow">To'y Taklifnomasi</p>
-        <h1>Bobur <span>&amp;</span> Nafisa</h1>
-        <p class="hero-date">14-iyun, 2026 • Hazorasp</p>
+        <h1>Diyorbek <span>&amp;</span> Zarina</h1>
+        <p class="hero-date">25-dekabr, 2026 • Buxoro</p>
         <button class="reveal-button" id="revealInvitation" type="button">
           Taklifnomani Ko'rish
         </button>
@@ -142,27 +141,37 @@
       <section class="section location reveal" id="location">
         <div class="section-heading">
           <p class="eyebrow">Manzil</p>
-          <h2>Bobogujum To'yxona</h2>
+          <h2>Toj Mahal</h2>
         </div>
         <div class="card location-card">
           <div class="map-wrap">
             <iframe
-              title="Bobogujum To'yxona map"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3072.1!2d61.2189!3d42.6256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae7b7b7b7b7b7b%3A0x0!2sBobogujum%20Wedding%20Palace%2C%20Hazorasp%2C%20Khorezm!5e0!3m2!1suz!2s!4v1234567890"
+              title="Toj Mahal xaritasi"
+              src="https://www.google.com/maps?q=Toj%20Mahal,%20Buxoro,%20Mustaqillik%20ko'chasi,%2012&output=embed"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
           <div class="location-copy">
-            <p>Xorazm viloyati, Hazorasp shaharchasi</p>
-            <a
-              class="inline-button"
-              href="https://yandex.uz/maps/org/184099658378?si=p2pbupj3rt2xh0vq5w3kr86j6r"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Xaritada Ochish
-            </a>
+            <p>Buxoro shahri, Mustaqillik koʻchasi, 12</p>
+            <div class="map-links">
+              <a
+                class="inline-button"
+                href="https://maps.app.goo.gl/Bpd5UJYGXMwfS5FN6"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Google Xaritada
+              </a>
+              <a
+                class="inline-button"
+                href="https://yandex.uz/maps/org/toj_mahal/101317411517?si=d4w4a4gz5aqju2cn821cbvtvyr"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Yandex Xaritada
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -188,8 +197,8 @@
 
       <section class="section rsvp reveal" id="rsvp">
         <div class="section-heading">
-          <p class="eyebrow">RSVP</p>
-          <h2>Ishtirokingizni tasdiqlang</h2>
+          <p class="eyebrow">Tilaklar</p>
+          <h2>Tilaklarga</h2>
         </div>
         <form
           class="card rsvp-form"
@@ -209,15 +218,6 @@
             <input type="text" name="name" placeholder="Ism familiyangiz" required>
           </label>
           <label>
-            Qatnashish Holati
-            <select name="attendance" required>
-              <option value="">Javobni tanlang</option>
-              <option value="joyfully-attending">Albatta boraman</option>
-              <option value="attending-with-regrets">Faqat marosimda qatnashaman</option>
-              <option value="sending-love">Uzoqdan ezgu tilaklarimni yuboraman</option>
-            </select>
-          </label>
-          <label>
             Kelinkuyovga Tilak
             <textarea
               name="message"
@@ -228,6 +228,7 @@
           <button class="submit-button" type="submit">Javobni Yuborish</button>
           <p class="form-response" id="formResponse" aria-live="polite"></p>
         </form>
+        <div class="wishes-list" id="wishesList"></div>
       </section>
 
       <section class="section thanks reveal" id="thanks">

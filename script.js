@@ -1,4 +1,4 @@
-const weddingDate = new Date("2026-06-14T18:00:00+05:00");
+const weddingDate = new Date("2026-12-25T18:00:00+05:00");
 
 const invitation = document.getElementById("invitation");
 const revealButton = document.getElementById("revealInvitation");
@@ -238,39 +238,55 @@ document.addEventListener(
   { passive: true }
 );
 
-rsvpForm.addEventListener("submit", async (event) => {
+const wishesList = document.getElementById("wishesList");
+
+function displayWishes() {
+  if (!wishesList) {
+    return;
+  }
+  const wishes = JSON.parse(localStorage.getItem("weddingWishes") || "[]");
+  wishesList.innerHTML = "";
+  wishes.slice().reverse().forEach((wish) => {
+    const item = document.createElement("div");
+    item.className = "wish-item";
+    item.innerHTML = `
+      <div class="wish-name">${escapeHtml(wish.name)}</div>
+      <div class="wish-text">${escapeHtml(wish.message)}</div>
+    `;
+    wishesList.appendChild(item);
+  });
+}
+
+function escapeHtml(text) {
+  const div = document.createElement("div");
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+rsvpForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const formData = new FormData(rsvpForm);
   const guestName = formData.get("name");
-  const attendance = formData.get("attendance");
-  const shouldNotifyByEmail =
-    attendance === "joyfully-attending" || attendance === "attending-with-regrets";
+  const guestMessage = formData.get("message");
 
-  const messages = {
-    "joyfully-attending": `Rahmat, ${guestName}. Siz bilan bu quvonchli kunni nishonlashni intiqlik bilan kutamiz.`,
-    "attending-with-regrets": `Rahmat, ${guestName}. Marosimning bir qismida sizni ko'rish biz uchun mamnuniyat bo'ladi.`,
-    "sending-love": `Rahmat, ${guestName}. Ezgu tilaklaringiz biz uchun juda qadrlidir.`,
-  };
-
-  formResponse.textContent = "Yuborilmoqda...";
-
-  if (shouldNotifyByEmail) {
-    try {
-      await fetch("/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: encodeFormData(formData),
-      });
-      formResponse.textContent = messages[attendance] || "Javobingiz uchun rahmat.";
-    } catch (error) {
-      formResponse.textContent = "Yuborishda xatolik bo'ldi. Iltimos, qayta urinib ko'ring.";
-      return;
-    }
-  } else {
-    formResponse.textContent = messages[attendance] || "Javobingiz uchun rahmat.";
+  if (!guestName || !guestMessage) {
+    formResponse.textContent = "Iltimos, ismingiz va tilakingizni kiriting.";
+    return;
   }
 
-  rsvpForm.reset();
+  formResponse.textContent = "Saqlanmoqda...";
+
+  try {
+    const wishes = JSON.parse(localStorage.getItem("weddingWishes") || "[]");
+    wishes.push({ name: guestName, message: guestMessage, date: new Date().toISOString() });
+    localStorage.setItem("weddingWishes", JSON.stringify(wishes));
+
+    formResponse.textContent = `Rahmat, ${guestName}. Tilakingiz qabul qilindi.`;
+    rsvpForm.reset();
+    displayWishes();
+  } catch (error) {
+    formResponse.textContent = "Saqlashda xatolik bo'ldi. Iltimos, qayta urinib ko'ring.";
+  }
 });
+
+displayWishes();
